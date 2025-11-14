@@ -59,14 +59,16 @@ string dataTable(const vector<Item> &dataItem)
 }
 
 bool tambahStokBarang(vector<Item> &daftar, const string &namaBarang, int jumlahTambah){
-    // Cari barang berdasarkan namaBarang.
+    if (jumlahTambah < 0) return false;
 
-    // Jika ditemukan → qty += jumlahTambah.
-
-    // Jika tidak ada → return false.
-
-    // Jangan izinkan jumlahTambah < 0.
-};
+    for (auto &item : daftar) {
+        if (item.nama == namaBarang) {
+            item.qty += jumlahTambah;
+            return true;
+        }
+    }
+    return false;
+}
 
 bool kurangiStokBarang(vector<Item> &daftar, const string &namaBarang, int jumlahKurang){
     // Barang harus ditemukan terlebih dahulu.
